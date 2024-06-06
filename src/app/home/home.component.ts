@@ -56,8 +56,15 @@ export class HomeComponent implements OnDestroy {
       this.list.push(this.todo);
       this.startTaskTimer(this.todo);
       this.task.reset();
+      this.deadline.reset();
     } else {
-      alert('pls enter a task');
+      if(!this.task.value){
+        alert('pls enter a task');
+      }
+      else{
+        alert('pls select deadline')
+      }
+      
     }
   }
   editTask(id: number) {
@@ -104,7 +111,7 @@ export class HomeComponent implements OnDestroy {
         },
       });
   }
-  
+
   timeDifferenceInSeconds(time1: string, time2: string) {
     // Split the time strings into hours and minutes
     const [hours1, minutes1] = time1.split(':').map(Number);
