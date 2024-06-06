@@ -95,12 +95,15 @@ export class HomeComponent implements OnDestroy {
   }
 
   startTaskTimer(task: todo) {
-    const deadline = this.timeDifferenceInSeconds(task.time, task.deadline);
+    let deadline = this.timeDifferenceInSeconds(task.time, task.deadline);
+    if(deadline === 0){
+      deadline = 3600;
+    }
     task.timerSubscription = interval(1000)
       .pipe(take(deadline))
       .subscribe({
         next: (val) => {
-          // Notify the user if val reaches 59 (0-based index)
+          // Notify the user if val reaches index - 1  (0-based index)
           if (val === deadline-1) {
             this.notify(task);
           }
@@ -122,6 +125,9 @@ export class HomeComponent implements OnDestroy {
     const totalMinutes2 = hours2 * 60 + minutes2;
 
     // Calculate the difference in minutes
+    if((totalMinutes2-totalMinutes1) <= 0){
+      return 0;
+    }
     const differenceInMinutes = Math.abs(totalMinutes1 - totalMinutes2);
 
     // Convert the difference back to seconds
