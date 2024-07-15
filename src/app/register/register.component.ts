@@ -24,7 +24,9 @@ export class RegisterComponent {
     if(this.name.value){
       this.authService.name = this.name.value
     } 
-    
+    if(this.password.value === this.authService.password && this.name.value === this.authService.admin){
+      this.authService.isAdmin = true;
+    }
     this.router.navigate([`/`]);
     console.log('heelo');
     

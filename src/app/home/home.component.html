@@ -1,7 +1,9 @@
+<div class="flex p-2">
 <div class="todo-container w-full max-w-md p-8 bg-white shadow-lg rounded-lg">
   <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Hello {{name}} {{date | date}}</h1>
   <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Today's To-Do</h1>
   <h3 class="text-1x1 text-center text-gray-800 mb-6">Don't back down 👍</h3>
+  
   
   <div class="flex mb-4">
     <input class="todo-input flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none" 
@@ -11,6 +13,11 @@
            placeholder="Add a new task">
     <button class="add-button px-4 py-2 text-white bg-blue-500 rounded-r-lg hover:bg-blue-600 transition duration-300" 
             (click)="add()">Add</button>
+  </div>
+
+  <!-- Input for setting deadline -->
+  <div class="flex mb-4 rounded-lg">
+    <input type="time" [formControl]="deadline" class="todo-input flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none" placeholder="Set deadline">
   </div>
   
   <ul>
@@ -38,4 +45,10 @@
       </div>
     </li>
   </ul>
+  <h5 class="text-center text-gray-800 mb-2 mt-5">Specialized for day-to-day tasks.    Be Productive !!</h5>
+</div>
+<div>
+  <h1 class="text-center mt-2 text-gray-800 text-lg  font-bold">Blogs</h1>
+<app-blog-container class="ml-6"></app-blog-container>
+</div>
 </div>
