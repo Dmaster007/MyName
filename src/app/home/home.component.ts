@@ -6,10 +6,12 @@ import { AuthService } from '../auth.service';
 import { interval, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { NotificationsService } from '../notifications.service';
+import { BlogComponent } from '../blog/blog.component';
+import { BlogContainerComponent } from '../blog-container/blog-container.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, DatePipe],
+  imports: [ReactiveFormsModule, CommonModule, DatePipe ,BlogComponent ,BlogContainerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

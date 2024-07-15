@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { RouterLink, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import { NotificationsService } from '../notifications.service';
@@ -14,8 +14,8 @@ import { NotificationsService } from '../notifications.service';
 })
 export class NavbarComponent {
   
-  constructor(public auth : AuthService , public noti : NotificationsService){
-
+  constructor(public auth : AuthService , public router : Router, public noti : NotificationsService){
+    
   }
   greeting = this.auth.isAuthentiucated
   dropdownOpen=  true;

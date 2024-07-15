@@ -32,8 +32,9 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
+              <a [routerLink]="['/']" routerLinkActive="router-link-active"  class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
               <a [routerLink]="['/register']" routerLinkActive="router-link-active" *ngIf="!auth.isAuthentiucated" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login / register</a>
+              <a [routerLink]="['/create']" routerLinkActive="router-link-active" *ngIf="auth.isAuthentiucated && auth.isAdmin" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Create Blog</a>
               <!-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a> -->
             </div>
@@ -41,7 +42,8 @@
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           
-          <span *ngIf="auth.isAuthentiucated" class="text-gray-300 mr-2">Greeting {{auth.name}} !!!</span>
+          <span *ngIf="auth.isAuthentiucated && !auth.isAdmin" class="text-gray-300 mr-2">Greeting {{auth.name}} !!!</span>
+          <span *ngIf="auth.isAdmin" class="text-gray-300 mr-2">Greeting Sir Welcome Back !!!</span>
           
           <div class="relative" x-data="{ open: false }">
             <button type="button" [matBadge]="noti.notificationList.length" (click)="toggleNotif()" class="relative rounded-full bg-gray-800 p-1 mr-2 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">

@@ -8,7 +8,9 @@ export class AuthService {
   public isAuthentiucated = false;
   public name = 'User'
   
-
+  admin = "durgesh"
+  password = 'valosucks'
+  isAdmin = false; 
   // constructor() { 
   //   this.loadFromLocalStorage()
   // }
